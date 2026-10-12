@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.0.1
+- The OpenRouter key for Jev is now a plugin setting (`userConfig`, stored in secure storage) instead of being read from the shell environment. A key saved in the plugin's own `.env` still works.
+- README documents everything the plugin fetches, sends and stores.
+- Directory listing fields: icon, documentation, support, privacy policy and terms links.
+
 ## 1.0.0
 First release as **Compare Anything by GrowthCast**.
 - Four gated steps: research, approve framework (human gate), freeze baseline, compare and review.

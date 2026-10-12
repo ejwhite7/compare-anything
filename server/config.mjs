@@ -8,7 +8,7 @@ export const APP = {
   id: "compare-anything",
   name: "Compare Anything",
   by: "GrowthCast",
-  version: "1.0.0",
+  version: "1.0.1",
 };
 
 export const setting = (name, env = process.env) =>

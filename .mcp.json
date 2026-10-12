@@ -2,9 +2,11 @@
   "mcpServers": {
     "compare-anything": {
       "command": "node",
-      "args": ["${CLAUDE_PLUGIN_ROOT}/server/main.mjs"],
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/server/main.mjs"
+      ],
       "env": {
-        "OPENROUTER_API_KEY": "${OPENROUTER_API_KEY:-}",
+        "COMPARE_ANYTHING_OPENROUTER_KEY": "${user_config.openrouter_api_key}",
         "COMPARE_ANYTHING_JEV": "${COMPARE_ANYTHING_JEV:-}",
         "COMPARE_ANYTHING_DATA": "${COMPARE_ANYTHING_DATA:-}",
         "COMPARE_ANYTHING_PORT": "${COMPARE_ANYTHING_PORT:-}"

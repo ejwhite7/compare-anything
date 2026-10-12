@@ -17,7 +17,11 @@ export function loadEnvFile(env = process.env) {
   if (!existsSync(file)) return;
   for (const line of readFileSync(file, "utf8").split(/\r?\n/)) {
     const m = line.match(/^\s*([A-Z0-9_]+)\s*=\s*"?(.*?)"?\s*$/);
-    if (m && !env[m[1]]) env[m[1]] = m[2];
+    if (!m) continue;
+    // A key saved as OPENROUTER_API_KEY here is this plugin's own setting.
+    const key =
+      m[1] === "OPENROUTER_API_KEY" ? "COMPARE_ANYTHING_OPENROUTER_KEY" : m[1];
+    if (!env[key]) env[key] = m[2];
   }
 }
 

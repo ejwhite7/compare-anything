@@ -53,11 +53,12 @@ Click any citation (E12) to see the exact quote and its source.
 | `/compare-anything:ui` | Link to the review UI |
 
 ## Configure
-The fact gate runs Jev through OpenRouter. Put the key in the environment Claude Code starts from, or in
-`~/.compare-anything/.env`:
-```
-OPENROUTER_API_KEY=sk-or-...
-```
+The fact gate runs Jev through OpenRouter. Claude Code asks for your **OpenRouter API key** when you enable the plugin and
+keeps it in secure storage; change it later in `/plugin` → compare-anything → Configure. Without a key the gate stops and
+says so, unless you set `COMPARE_ANYTHING_JEV=off`.
+
+Optional settings, read from the environment Claude Code starts from or from `.env` in the data directory:
+
 | Setting | Default | Meaning |
 |---|---|---|
 | `COMPARE_ANYTHING_DATA` | `~/.compare-anything` | Database, UI token and `.env` |
@@ -68,6 +69,22 @@ OPENROUTER_API_KEY=sk-or-...
 
 Jev checks cost about $0.0001 per claim. Projects from the pre-release `comp-engine` build (`~/.comp-engine`) are used
 automatically, and `COMP_ENGINE_*` settings still work.
+
+## Data and network
+Everything the plugin does outside Claude's own tools:
+
+- **Fetches web pages** that Claude asks it to capture (`page_fetch`), with the user agent
+  `CompareAnything/1.0 (GrowthCast evidence research; respects robots.txt)`. It first fetches that site's `robots.txt` and
+  skips disallowed pages. A domain that refuses crawling (robots.txt, 401/402/403/451) is recorded locally and never
+  fetched again.
+- **Sends fact checks to OpenRouter** (`https://openrouter.ai/api/alpha/decisions`, model `typesafe/jev-1.13`) using your
+  key: each claim's text, the cited quotes with about 300 characters of surrounding page text, and the sources' titles,
+  publishers and URLs. Requests ask providers for zero data retention and no data collection. Nothing else is sent.
+- **Stores everything locally** in a SQLite database and a UI access token in `~/.compare-anything` (or
+  `COMPARE_ANYTHING_DATA`): projects, captured page text, quotes, answers, fact-check results and reports.
+- **Runs a local web server** on `127.0.0.1` only, which requires the access token and rejects requests addressed to any
+  other host name.
+- **No telemetry.** The plugin sends nothing to GrowthCast.
 
 ## Develop
 ```

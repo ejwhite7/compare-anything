@@ -204,7 +204,10 @@ test("fact requests share passages and pack under the context budget", () => {
 
 test("the gate refuses to run without a Jev key unless explicitly off", async () => {
   const { jevConfig } = await import("../server/gates.mjs");
-  assert.throws(() => jevConfig({}), /OPENROUTER_API_KEY/);
+  assert.throws(() => jevConfig({}), /OpenRouter API key/);
+  // A credential already in the environment is never picked up.
+  assert.throws(() => jevConfig({ OPENROUTER_API_KEY: "sk-or-from-shell" }), /OpenRouter API key/);
+  assert.equal(jevConfig({ COMPARE_ANYTHING_OPENROUTER_KEY: "k" }).key, "k");
   assert.deepEqual(jevConfig({ COMPARE_ANYTHING_JEV: "off" }), { mode: "off" });
 });
 

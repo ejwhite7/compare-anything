@@ -91,6 +91,6 @@ the citation already shows that.
 
 ## Costs
 
-Jev checks cost fractions of a cent. Without `OPENROUTER_API_KEY` the gate
-stops and asks for it; with `COMPARE_ANYTHING_JEV=off` results are recorded as
+Jev checks cost fractions of a cent. Without an OpenRouter API key in the
+plugin's settings the gate stops and asks for it; with `COMPARE_ANYTHING_JEV=off` results are recorded as
 unverified and labelled so in every report.

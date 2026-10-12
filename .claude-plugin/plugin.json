@@ -1,7 +1,7 @@
 {
   "name": "compare-anything",
   "displayName": "Compare Anything by GrowthCast",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Evidence-backed comparisons of companies and products in four gated steps: research, approve a criteria framework, freeze a fact-checked baseline, then compare and review. Claude researches and writes; Jev fact-checks every claim against verbatim excerpts. Includes a local review UI.",
   "author": {
     "name": "GrowthCast",
@@ -17,5 +17,18 @@
     "evidence",
     "fact-checking",
     "buyer-research"
-  ]
+  ],
+  "documentationUrl": "https://github.com/ejwhite7/compare-anything#readme",
+  "supportUrl": "https://github.com/ejwhite7/compare-anything/issues",
+  "privacyPolicyUrl": "https://growthcast.app/privacy",
+  "termsOfServiceUrl": "https://growthcast.app/terms",
+  "icon": "./web/favicon.jpg",
+  "userConfig": {
+    "openrouter_api_key": {
+      "type": "string",
+      "title": "OpenRouter API key",
+      "description": "Used only to send fact-check requests to Jev (typesafe/jev-1.13) through OpenRouter. Leave empty to record results as unverified.",
+      "sensitive": true
+    }
+  }
 }

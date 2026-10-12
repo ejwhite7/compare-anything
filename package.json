@@ -1,13 +1,15 @@
 {
   "name": "compare-anything",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "type": "module",
   "description": "Compare Anything by GrowthCast: a Claude Code plugin for evidence-backed, fact-checked comparisons of companies and products, with a local review UI.",
   "scripts": {
     "test": "node --test tests/*.test.mjs"
   },
-  "engines": { "node": ">=22.13" },
+  "engines": {
+    "node": ">=22.13"
+  },
   "license": "MIT",
   "author": "GrowthCast (https://growthcast.app)"
 }

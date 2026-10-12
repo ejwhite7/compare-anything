@@ -180,15 +180,18 @@ async function decide(group, { fetchImpl = fetch, key, model }) {
 }
 
 export function jevConfig(env = process.env) {
-  if (env === process.env && !env.OPENROUTER_API_KEY) loadEnvFile(env);
+  // The key comes from the plugin's own settings (userConfig) or its data
+  // directory's .env, never from a credential already in the environment.
+  if (env === process.env && !setting("OPENROUTER_KEY", env)) loadEnvFile(env);
   if (setting("JEV", env) === "off") return { mode: "off" };
-  if (!env.OPENROUTER_API_KEY)
+  const key = setting("OPENROUTER_KEY", env);
+  if (!key)
     throw new GateError(
-      "The fact gate needs OPENROUTER_API_KEY for Jev. Set it in the environment Claude Code starts from, or set COMPARE_ANYTHING_JEV=off to record results as unverified.",
+      "The fact gate needs an OpenRouter API key for Jev. Add it in the plugin's settings (run /plugin, select compare-anything, then Configure), or set COMPARE_ANYTHING_JEV=off to record results as unverified.",
     );
   return {
     mode: "jev",
-    key: env.OPENROUTER_API_KEY,
+    key,
     model: setting("JEV_MODEL", env) || "typesafe/jev-1.13",
   };
 }
