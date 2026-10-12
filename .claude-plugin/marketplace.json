@@ -1,0 +1,25 @@
+{
+  "name": "growthcast",
+  "description": "GrowthCast plugins for Claude Code: GTM and growth tooling.",
+  "owner": { "name": "GrowthCast", "url": "https://growthcast.app" },
+  "plugins": [
+    {
+      "name": "compare-anything",
+      "source": "./",
+      "description": "Compare Anything by GrowthCast: evidence-backed, fact-checked comparisons of companies and products, with a local review UI.",
+      "category": "research"
+    },
+    {
+      "name": "paid-media-planner",
+      "source": { "source": "github", "repo": "ejwhite7/paid-media-planner" },
+      "description": "Paid Media Campaign Planner by GrowthCast: plan, mock, review and hand off paid media campaigns across eight ad networks.",
+      "category": "marketing"
+    },
+    {
+      "name": "product-release-checklist",
+      "source": { "source": "github", "repo": "ejwhite7/product-release-checklist" },
+      "description": "Product Release Checklist by GrowthCast: tiered launch system from kickoff to T+90 adoption readout.",
+      "category": "marketing"
+    }
+  ]
+}

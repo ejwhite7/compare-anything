@@ -1,0 +1,21 @@
+{
+  "name": "compare-anything",
+  "displayName": "Compare Anything by GrowthCast",
+  "version": "1.0.0",
+  "description": "Evidence-backed comparisons of companies and products in four gated steps: research, approve a criteria framework, freeze a fact-checked baseline, then compare and review. Claude researches and writes; Jev fact-checks every claim against verbatim excerpts. Includes a local review UI.",
+  "author": {
+    "name": "GrowthCast",
+    "url": "https://growthcast.app"
+  },
+  "homepage": "https://growthcast.app",
+  "repository": "https://github.com/ejwhite7/compare-anything",
+  "license": "MIT",
+  "keywords": [
+    "competitive-analysis",
+    "comparison",
+    "research",
+    "evidence",
+    "fact-checking",
+    "buyer-research"
+  ]
+}
